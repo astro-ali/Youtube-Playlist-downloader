@@ -127,36 +127,6 @@
     <property name="toolTip">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pick the quality you want&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
-    <item>
-     <property name="text">
-      <string>1080p</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>720p</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>480p</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>360p</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>240p</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>144p</string>
-     </property>
-    </item>
    </widget>
    <widget class="QProgressBar" name="progressBar">
     <property name="geometry">

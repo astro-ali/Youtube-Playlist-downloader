@@ -1,5 +1,6 @@
 import googleapiclient.discovery
 from urllib.parse import parse_qs, urlparse
+import pafy
 
 def fetch_playlist_urls(playlist_url):
 	API_KEY = "AIzaSyBsvjNJOSlBxRg9HYwDcslAi49B-BrXaPQ"
@@ -26,11 +27,12 @@ def fetch_playlist_urls(playlist_url):
 	return [video_links, titles]
 
 
-quality_dict = {
-	"1080p":"1080",
-	"720p" :"720",
-	"480p" :"480",
-	"360p" :"360",
-	"240p" :"240",
-	"144p" :"144"
-}
+def fetchIDs(playlist_url):
+	playlist = pafy.get_playlist(playlist_url)
+	video_IDs = [playlist['items'][v]['pafy'].videoid 
+	for v in range(len(playlist['items']))]
+	titles = [playlist['items'][v]['pafy'].title 
+	for v in range(len(playlist['items']))]
+	video_links = [f"https://www.youtube.com/watch?v={video_id}" 
+	for video_id in video_IDs]
+	return [video_links, titles]

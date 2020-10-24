@@ -24,7 +24,7 @@ class MainApp(QMainWindow, From_Class):
 
 	def initGUI(self):
 		self.setFixedSize(539, 431)
-
+		
 	def connectButtons(self):
 		cwd = os.getcwd()
 		self.location_input.setText(cwd)
@@ -34,7 +34,7 @@ class MainApp(QMainWindow, From_Class):
 		self.stop_downloading.clicked.connect(self.stopDownload)
 
 	def browse_button(self):
-		save_location = QtWidgets.QFileDialog.getExistingDirectory(self, 'Select Folder')
+		save_location,_ = QtWidgets.QFileDialog.getSaveFileName(self, 'Save As')
 		self.location_input.setText(save_location)
 
 	def setQuality(self):
@@ -42,10 +42,10 @@ class MainApp(QMainWindow, From_Class):
 
 	def fetchUrls(self):
 		url = self.url_input.text()
-		if "https://" not in url:
+		if "http" not in url:
 			QMessageBox.warning(self, "invalid URL", "Please Enter a valid URL")
 		else:
-			playlist = fetch_playlist_urls(url)
+			playlist = fetchIDs(url)
 			for i in range(len(playlist[0])):
 				title = playlist[1][i]
 				self.status_box.append(title)
@@ -74,9 +74,6 @@ class MainApp(QMainWindow, From_Class):
 			percent = read * 100 / totalSize
 			self.progressBar.setValue(int(percent))
 			QApplication.processEvents()
-
-	def statusBar(self):
-		pass
 
 	def totalVideos(self):
 		pass
